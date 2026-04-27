@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgcrn1rkcawb8"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_8k7e0"]
+[ext_resource type="PackedScene" uid="uid://deb7cdn0be2xx" path="res://Prefabs/Attacks/bullet.tscn" id="2_uhsur"]
+[ext_resource type="PackedScene" uid="uid://c8ws0ovi5flj7" path="res://Prefabs/Objects/coin.tscn" id="3_xt3gs"]
+[ext_resource type="Texture2D" uid="uid://b8tqlqy4wf5nd" path="res://Sprites/My Sprites/police.png" id="4_ni4ah"]
+[ext_resource type="Texture2D" uid="uid://bjdqkgu2tr3cn" path="res://Sprites/My Sprites/bar_background.png" id="5_6jvwr"]
+[ext_resource type="Texture2D" uid="uid://dgx416vxp8teg" path="res://Sprites/My Sprites/bar_progress.png" id="6_k6od2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by0cj"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvv8o"]
+radius = 104.307
+
+[node name="Enemy" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_8k7e0")
+hp = 8
+damage = 1
+bulletSpd = 600
+atkSpd = 3.0
+bulletNum = 5
+shotSpd = 0.2
+dropAmount = 3
+bullet = ExtResource("2_uhsur")
+drop = ExtResource("3_xt3gs")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(3.05176e-05, -9.77516e-06)
+scale = Vector2(4, 4)
+texture = ExtResource("4_ni4ah")
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_by0cj")
+
+[node name="AggroRange" type="Area2D" parent="."]
+scale = Vector2(4, 4)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_bvv8o")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+value = 10.0
+texture_under = ExtResource("5_6jvwr")
+texture_progress = ExtResource("6_k6od2")
+
+[connection signal="body_entered" from="AggroRange" to="." method="_on_aggro_range_body_entered"]
+[connection signal="body_exited" from="AggroRange" to="." method="_on_aggro_range_body_exited"]

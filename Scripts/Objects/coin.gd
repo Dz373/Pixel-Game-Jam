@@ -1,0 +1,7 @@
+extends Area2D
+
+@export var amount: int
+
+func _on_body_entered(body: Node2D) -> void:
+	body.gameManager.updateCoins(amount)
+	queue_free()

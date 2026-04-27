@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=3 uid="uid://dij4roguq32mx"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_it0ja"]
+[ext_resource type="Texture2D" uid="uid://da7eyelnype57" path="res://Sprites/My Sprites/zombie.png" id="2_erace"]
+[ext_resource type="PackedScene" uid="uid://b7kosu5t5j62a" path="res://Prefabs/Attacks/swipe_attack.tscn" id="2_l4mmx"]
+[ext_resource type="PackedScene" uid="uid://c0p65sagrd420" path="res://Prefabs/Attacks/spit.tscn" id="3_7gik4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xeri2"]
+size = Vector2(43, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ax67"]
+atlas = ExtResource("2_erace")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xactb"]
+atlas = ExtResource("2_erace")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mjgj"]
+atlas = ExtResource("2_erace")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4cfx"]
+atlas = ExtResource("2_erace")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cu0q"]
+atlas = ExtResource("2_erace")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jlss"]
+atlas = ExtResource("2_erace")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csvpq"]
+atlas = ExtResource("2_erace")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe3om"]
+atlas = ExtResource("2_erace")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85nbo"]
+atlas = ExtResource("2_erace")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kavmx"]
+atlas = ExtResource("2_erace")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnnhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ax67")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xactb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mjgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4cfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cu0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jlss")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csvpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe3om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85nbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kavmx")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_it0ja")
+swipeAttack = ExtResource("2_l4mmx")
+projAttack = ExtResource("3_7gik4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_xeri2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_bottom = 648
+limit_smoothed = true
+drag_horizontal_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qnnhm")
+autoplay = "default"

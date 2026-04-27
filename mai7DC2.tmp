@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c476fy48r3kdc"]
+
+[ext_resource type="Texture2D" uid="uid://dno1t4nka26u2" path="res://icon.svg" id="1_drthj"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_yd2la"]
+[ext_resource type="PackedScene" uid="uid://dij4roguq32mx" path="res://Prefabs/player.tscn" id="2_ec5e6"]
+[ext_resource type="Script" path="res://Scripts/Objects/mine.gd" id="3_xka2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6gwf"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_yd2la")
+
+[node name="Player" parent="." instance=ExtResource("2_ec5e6")]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(680, 288)
+script = ExtResource("3_xka2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_y6gwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_drthj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Counter" type="Label" parent="CanvasLayer"]
+offset_left = 960.0
+offset_right = 1145.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+text = "Night: 1
+"
+
+[node name="Health" type="Label" parent="CanvasLayer"]
+offset_right = 185.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+text = "Health"
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsjhi4nggxc3p"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/tank.gd" id="1_0ffg1"]
+[ext_resource type="Texture2D" uid="uid://bj62st3b0ypvr" path="res://Sprites/My Sprites/tank.png" id="2_ntcqg"]
+[ext_resource type="PackedScene" uid="uid://deb7cdn0be2xx" path="res://Prefabs/Attacks/bullet.tscn" id="2_otiqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogpk8"]
+size = Vector2(43, 16)
+
+[node name="TankBoss" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_0ffg1")
+hp = 50
+atk = 1
+atkSpd = 4.0
+ammo1 = ExtResource("2_otiqr")
+atkType = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -7.62939e-06)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ogpk8")
+
+[node name="Tank" type="Sprite2D" parent="."]
+position = Vector2(17, 0)
+scale = Vector2(8, 8)
+texture = ExtResource("2_ntcqg")

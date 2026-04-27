@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4815e181n8cj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubh80"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1768.0
+offset_bottom = 880.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubh80")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 96.0
+offset_right = 786.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 40
+text = "Thank you for playing"
+horizontal_alignment = 1

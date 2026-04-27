@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3dvn1rv8u8h0"]
+
+[ext_resource type="Texture2D" uid="uid://xtiqae32mkkv" path="res://Sprites/Zombie Apocalypse Tileset/Organized separated sprites/Spawning Item Box Animation Frames + Broken Box Pieces/Zombie-Tileset---_0288_Capa-289.png" id="1_cke1a"]
+[ext_resource type="Script" path="res://Scripts/Objects/breakable.gd" id="1_snx0t"]
+[ext_resource type="Texture2D" uid="uid://bjdqkgu2tr3cn" path="res://Sprites/My Sprites/bar_background.png" id="2_t54el"]
+[ext_resource type="Texture2D" uid="uid://dgx416vxp8teg" path="res://Sprites/My Sprites/bar_progress.png" id="3_notvn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyumm"]
+size = Vector2(64, 64)
+
+[node name="Breakable" type="StaticBody2D"]
+collision_layer = 64
+script = ExtResource("1_snx0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xyumm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_cke1a")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = 24.0
+scale = Vector2(4, 4)
+value = 10.0
+texture_under = ExtResource("2_t54el")
+texture_progress = ExtResource("3_notvn")

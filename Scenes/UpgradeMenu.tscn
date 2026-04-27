@@ -1,0 +1,316 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyu2cmevb8gre"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/upgrade_menu.gd" id="1_5ut0h"]
+[ext_resource type="Script" path="res://Scripts/Menu/bar.gd" id="2_a5jpd"]
+[ext_resource type="PackedScene" uid="uid://c70naa5656pp2" path="res://Prefabs/Objects/pip.tscn" id="3_ytmid"]
+[ext_resource type="Texture2D" uid="uid://ewu4nbp6krc1" path="res://Sprites/My Sprites/abilityIcons.png" id="4_w2i5m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oihun"]
+bg_color = Color(0.159448, 0.200502, 0.144149, 1)
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ut0h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1504.0
+offset_bottom = 872.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oihun")
+
+[node name="Coins" type="Label" parent="."]
+layout_mode = 2
+offset_left = 944.0
+offset_top = 40.0
+offset_right = 1088.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30
+text = "Coins: 0
+"
+
+[node name="Round" type="Label" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 216.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30
+text = "Night: 0
+"
+
+[node name="Display" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 288.0
+
+[node name="Hp" type="Label" parent="Display"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 30
+text = "Health:"
+
+[node name="HpBar" type="HBoxContainer" parent="Display"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 16.0
+offset_right = 408.0
+offset_bottom = 56.0
+theme_override_constants/separation = 2
+script = ExtResource("2_a5jpd")
+pip = ExtResource("3_ytmid")
+
+[node name="Atk" type="Label" parent="Display"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 144.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 30
+text = "Damage:"
+
+[node name="AtkBar" type="HBoxContainer" parent="Display"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 72.0
+offset_right = 408.0
+offset_bottom = 112.0
+theme_override_constants/separation = 2
+script = ExtResource("2_a5jpd")
+pip = ExtResource("3_ytmid")
+
+[node name="Spd" type="Label" parent="Display"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 136.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 30
+text = "Speed:"
+
+[node name="SpdBar" type="HBoxContainer" parent="Display"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 128.0
+offset_right = 408.0
+offset_bottom = 168.0
+theme_override_constants/separation = 2
+script = ExtResource("2_a5jpd")
+pip = ExtResource("3_ytmid")
+
+[node name="Mult" type="Label" parent="Display"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 192.0
+offset_right = 136.0
+offset_bottom = 234.0
+theme_override_font_sizes/font_size = 30
+text = "Mult:"
+
+[node name="MultBar" type="HBoxContainer" parent="Display"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 192.0
+offset_right = 408.0
+offset_bottom = 232.0
+theme_override_constants/separation = 2
+script = ExtResource("2_a5jpd")
+pip = ExtResource("3_ytmid")
+
+[node name="UpgradeList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 104.0
+offset_right = 1120.0
+offset_bottom = 552.0
+
+[node name="HpUp" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Health Up"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/HpUp"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="AtkUp" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Damage Up"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/AtkUp"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "2"
+
+[node name="SpdUp" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Speed Up"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/SpdUp"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "5"
+
+[node name="Attack" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Attack"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/Attack"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = -2.0
+offset_right = 384.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="Shoot" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Shoot"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/Shoot"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "10"
+
+[node name="Dash" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Dash
+"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/Dash"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "20"
+
+[node name="Mult" type="Button" parent="UpgradeList"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Multiplier"
+alignment = 0
+
+[node name="Label" type="Label" parent="UpgradeList/Mult"]
+layout_mode = 0
+offset_left = 344.0
+offset_right = 384.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "2"
+
+[node name="AbilityList" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="AbilityList"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 432.0
+offset_right = 189.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 30
+text = "Cd: 3 sec
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="AbilityList/Label"]
+position = Vector2(64, -32)
+scale = Vector2(4, 4)
+texture = ExtResource("4_w2i5m")
+hframes = 3
+
+[node name="Label2" type="Label" parent="AbilityList"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 432.0
+offset_right = 381.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 30
+text = "Cd: 3 sec
+"
+
+[node name="Sprite2D2" type="Sprite2D" parent="AbilityList/Label2"]
+position = Vector2(64, -32)
+scale = Vector2(4, 4)
+texture = ExtResource("4_w2i5m")
+hframes = 3
+frame = 1
+
+[node name="Label3" type="Label" parent="AbilityList"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 432.0
+offset_right = 573.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 30
+text = "Cd: 5 sec
+"
+
+[node name="Sprite2D3" type="Sprite2D" parent="AbilityList/Label3"]
+position = Vector2(64, -32)
+scale = Vector2(4, 4)
+texture = ExtResource("4_w2i5m")
+hframes = 3
+frame = 2
+
+[node name="Respawn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 568.0
+offset_right = 1084.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 30
+text = "Next Night
+"
+
+[connection signal="button_down" from="UpgradeList/HpUp" to="." method="_on_hp_up_button_down"]
+[connection signal="button_down" from="UpgradeList/AtkUp" to="." method="_on_atk_up_button_down"]
+[connection signal="button_down" from="UpgradeList/SpdUp" to="." method="_on_spd_up_button_down"]
+[connection signal="button_down" from="UpgradeList/Attack" to="." method="_on_attack_button_down"]
+[connection signal="button_down" from="UpgradeList/Shoot" to="." method="_on_shoot_button_down"]
+[connection signal="button_down" from="UpgradeList/Dash" to="." method="_on_dash_button_down"]
+[connection signal="button_down" from="UpgradeList/Mult" to="." method="_on_mult_button_down"]
+[connection signal="button_down" from="Respawn" to="." method="_on_button_button_down"]
